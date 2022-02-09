@@ -8,7 +8,8 @@
    
    async function main() {
 let pyodide = await loadPyodide({ indexURL : "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/" });
-// Pyodide is now ready to use... console.log(pyodide.runPython(`
+// Pyodide is now ready to use... 
+console.log(pyodide.runPython(`
 import sys
     sys.version
     from js import document
