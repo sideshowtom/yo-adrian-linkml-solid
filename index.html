@@ -10,10 +10,12 @@
 let pyodide = await loadPyodide({ indexURL : "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/" });
 // Pyodide is now ready to use... 
 console.log(pyodide.runPython(`
-import sys
-    sys.version
+    import sys
     from js import document
-    document.write("hi")
+    div = document.createElement("div")
+    div.innerHTML = "<h1>This element was created from Python</h1>"
+    #insert into body as a first child
+    document.body.prepend(div)
   `));
 }; main();
    
