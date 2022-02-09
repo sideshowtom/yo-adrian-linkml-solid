@@ -8,13 +8,13 @@
     // then run Python code
      .then(() => console.log(pyodide.runPython(
      
-     `import sys \n
-      import js \n
-      from js import document \n
-      div = document.createElement('div') \n
-      div.innerHTML = "<h1>This element was created from Python</h1>" \n
-      #insert into body as a first child \n
-       document.body.prepend(div)'
+     `import sys \n'+
+      'import js \n'+
+      'from js import document \n'+
+      'div = document.createElement('div') \n'+
+      'div.innerHTML = "<h1>This element was created from Python</h1>" \n'+
+      '#insert into body as a first child \n'+
+       'document.body.prepend(div)'
        
        )));
      
