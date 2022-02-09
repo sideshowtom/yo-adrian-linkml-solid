@@ -11,6 +11,8 @@ let pyodide = await loadPyodide({ indexURL : "https://cdn.jsdelivr.net/pyodide/v
 // Pyodide is now ready to use... console.log(pyodide.runPython(`
 import sys
     sys.version
+    from js import document
+    document.write("hi")
   `));
 }; main();
    
