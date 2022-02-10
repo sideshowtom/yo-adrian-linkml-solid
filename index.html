@@ -26,7 +26,26 @@ output.value += "Ready!\n"; return pyodide;
 let pyodideReadyPromise = main();
 async function evaluatePython() {
 let pyodide = await pyodideReadyPromise; try {
-let output = pyodide.runPython("634*879");
+let output = pyodide.runPython("
+
+import yaml
+
+schema = {
+  'id': my_schema_url,
+  classes: [
+   {
+    'Person': {
+      'description": "any person, living or dead',
+      'attributes': {
+          ...
+       }
+    }
+   }
+  ]
+}
+print(yaml.dump(schema))
+     
+");
 addToOutput(output); } catch (err) {
           addToOutput("oops: "+err);
         }
