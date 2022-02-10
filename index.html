@@ -26,7 +26,7 @@ output.value += "Ready!\n"; return pyodide;
 let pyodideReadyPromise = main();
 async function evaluatePython() {
 let pyodide = await pyodideReadyPromise; try {
-let output = pyodide.runPython("import sys\nfrom js import document\ndocument.getElementById('output').value='hi\'");
+pyodide.runPython("import sys\nfrom js import document\ndocument.getElementById('output').value='hi\'");
 //\n
 //\n
 //import yaml\n
@@ -47,8 +47,9 @@ let output = pyodide.runPython("import sys\nfrom js import document\ndocument.ge
 //print(yaml.dump(schema))\n
 //\n     
 //");
-addToOutput(output); } catch (err) {
-          addToOutput("oops: "+err);
-        }
-} </script>
+} catch (err) {
+    addToOutput("oops: "+err);
+  }
+} 
+</script>
 </body> </html>
