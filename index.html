@@ -26,7 +26,7 @@ output.value += "Ready!\n"; return pyodide;
 let pyodideReadyPromise = main();
 async function evaluatePython() {
 let pyodide = await pyodideReadyPromise; try {
-let output = pyodide.runPython("wha?");
+let output = pyodide.runPython("634*879");
 addToOutput(output); } catch (err) {
           addToOutput("oops: "+err);
         }
