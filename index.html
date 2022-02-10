@@ -23,10 +23,10 @@ let pyodide = await loadPyodide({
 indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
 });
      
-await pyodide.runPythonAsync(`\
+await pyodide.runPythonAsync("\
         import micropip\n\
         await micropip.install('linkml')\n\
-        import yaml');
+        import yaml");
      
 output.value += "Ready!\n"; return pyodide;
 }
