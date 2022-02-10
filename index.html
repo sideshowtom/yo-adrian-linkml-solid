@@ -38,7 +38,7 @@ let pyodide = await pyodideReadyPromise; try {
 pyodide.runPython("\
 import sys\n\
 import micropip\n\
-await micropip.install('linkml')\n\
+micropip.install('linkml')\n\
 import yaml\n\
 from js import document\n\
 import yaml\n\
