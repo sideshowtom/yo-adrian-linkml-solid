@@ -1,11 +1,65 @@
 <!DOCTYPE html>
-<html> <head>
+<html> <!--head>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.19.0/full/pyodide.js"></script> </head>
 <body> <p>
      The plan is to run LinkML utilities in Python and connect to a Solid pod with Javascript and solid-ui-components.
-</p>
+</p-->
 
-<button onclick="evaluatePython()">Run</button>
+     
+     
+     
+     
+<script type="text/javascript">
+      // set the pyodide files URL (packages.json, pyodide.asm.data etc)
+      window.languagePluginUrl = 'https://cdn.jsdelivr.net/pyodide/v0.16.1/full/';
+</script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.16.1/full/pyodide.js"></script>
+<script>
+function setup_pyodide() {
+  // setup pyodide environment to run code blocks as needed
+  var setup_code = `
+import sys, io, traceback
+namespace = {}  # use separate namespace to hide run_code, modules, etc.
+def run_code(code):
+  """run specified code and return stdout and stderr"""
+  out = io.StringIO()
+  oldout = sys.stdout
+  olderr = sys.stderr
+  sys.stdout = sys.stderr = out
+  try:
+      # change next line to exec(code, {}) if you want to clear vars each time
+      exec(code, namespace)
+  except:
+      traceback.print_exc()
+
+  sys.stdout = oldout
+  sys.stderr = olderr
+  return out.getvalue()
+`
+  pyodide.runPython(setup_code)
+}
+
+function runPython() {
+  // run code currently stored in editor
+  pyodide.globals.code_to_run = editor.getValue()
+  document.getElementById("output").value = pyodide.runPython("run_code('print("ok")')")
+}
+
+// run setup_pyodide() when pyodide finishes loading
+languagePluginLoader.then(setup_pyodide)
+
+</script>     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+<!--button onclick="evaluatePython()">Run</button>
 <br />
 <br />
 <div>Output:</div>
@@ -51,5 +105,5 @@ addToOutput(output); } catch (err) {
           addToOutput("oops: "+err);
         }
 } </script>
-</body> </html>
+</body--> </html>
 
