@@ -23,10 +23,10 @@ let pyodide = await loadPyodide({
 indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
 });
      
-//await pyodide.runPythonAsync("\
-//        import micropip\n\
-//        await micropip.install('linkml')\n\
-//        import yaml");
+pyodide.runPython("\
+import micropip\n\
+await micropip.install('linkml')\n\
+import yaml");
      
 output.value += "Ready!\n"; return pyodide;
 }
@@ -37,9 +37,6 @@ let pyodide = await pyodideReadyPromise; try {
      
 pyodide.runPython("\
 import sys\n\
-import micropip\n\
-micropip.install('linkml')\n\
-import yaml\n\
 from js import document\n\
 import yaml\n\
 schema = {\n\
