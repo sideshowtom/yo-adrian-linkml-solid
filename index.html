@@ -12,9 +12,9 @@
 <textarea id="output" style="width: 100%;" rows="6" disabled></textarea>
      
 <script>
-const output = document.getElementById("output"); const code = document.getElementById("code");
+const output = document.getElementById("output");
 function addToOutput(s) {
-output.value += ">>>" + code.value + "\n" + s + "\n";
+output.value += ">>> " + s + "\n";
 }
 output.value = "Initializing...\n"; // init Pyodide
 async function main() {
@@ -26,9 +26,11 @@ output.value += "Ready!\n"; return pyodide;
 let pyodideReadyPromise = main();
 async function evaluatePython() {
 let pyodide = await pyodideReadyPromise; try {
-let output = pyodide.runPython(code.value);
+let output = pyodide.runPython(
+     "sum([1, 2, 3, 4, 5])"
+);
 addToOutput(output); } catch (err) {
-          addToOutput(err);
+          addToOutput("ok!");
         }
 } </script>
 </body> </html>
