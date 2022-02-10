@@ -28,7 +28,7 @@ async function evaluatePython() {
 let pyodide = await pyodideReadyPromise; try {
 let output = pyodide.runPython("wha?");
 addToOutput(output); } catch (err) {
-          addToOutput("oops"+err);
+          addToOutput("oops: "+err);
         }
 } </script>
 </body> </html>
