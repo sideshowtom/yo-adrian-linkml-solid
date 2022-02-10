@@ -26,26 +26,27 @@ output.value += "Ready!\n"; return pyodide;
 let pyodideReadyPromise = main();
 async function evaluatePython() {
 let pyodide = await pyodideReadyPromise; try {
-let output = pyodide.runPython("\n
-\n
-import yaml\n
-\n
-schema = {\n
-  'id': my_schema_url,\n
-  classes: [\n
-   {\n
-    'Person': {\n
-      'description": "any person, living or dead',\n
-      'attributes': {\n
-          ...\n
-       }\n
-    }\n
-   }\n
-  ]\n
-}\n
-print(yaml.dump(schema))\n
-\n     
-");
+let output = pyodide.runPython("print(hi)");
+//\n
+//\n
+//import yaml\n
+//\n
+//schema = {\n
+//  'id': my_schema_url,\n
+//  classes: [\n
+//   {\n
+ //   'Person': {\n
+//      'description": "any person, living or dead',\n
+//      'attributes': {\n
+//          ...\n
+//       }\n
+//    }\n
+//   }\n
+//  ]\n
+//}\n
+//print(yaml.dump(schema))\n
+//\n     
+//");
 addToOutput(output); } catch (err) {
           addToOutput("oops: "+err);
         }
