@@ -26,9 +26,7 @@ output.value += "Ready!\n"; return pyodide;
 let pyodideReadyPromise = main();
 async function evaluatePython() {
 let pyodide = await pyodideReadyPromise; try {
-let output = pyodide.runPython(
-     "sum([1, 2, 3, 4, 5])"
-);
+let output = pyodide.runPython(sum([1, 2, 3, 4, 5]));
 addToOutput(output); } catch (err) {
           addToOutput("ok!");
         }
