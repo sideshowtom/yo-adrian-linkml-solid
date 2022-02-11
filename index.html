@@ -24,7 +24,7 @@ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
 });
      
 await pyodide.loadPackagesFromImports('import yaml');
-await pyodide.loadPackagesFromImports('import linkml');
+await pyodide.loadPackagesFromImports('import linkml_runtime');
      
 output.value += "Ready!\n"; return pyodide;
 }
@@ -37,7 +37,7 @@ pyodide.runPython("\n\
 import sys\n\
 from js import document\n\
 import yaml\n\
-import linkml\n\
+import linkml_runtime\n\
 schema = {\n\
 'id': 'http\:\/\/nuttin',\n\
 'classes': [\n\
