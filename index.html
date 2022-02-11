@@ -34,22 +34,22 @@ let pyodide = await pyodideReadyPromise; try {
 //pyodide.runPython("import sys\nfrom js import document\ndocument.getElementById('output').value='hi'");
      
 pyodide.runPython('\
-import sys\
-from js import document\
-import yaml\
-schema = {\
-'id': 'http\:\/\/nuttin',\
-'classes': [\
-{\
-'Person': {\
-'description': 'any person, living or dead',\
-'attributes': {\
-\
-}\
-}\
-}\
-]\
-}\
+import sys\n\
+from js import document\n\
+import yaml\n\
+schema = {\n\
+'id': 'http\:\/\/nuttin',\n\
+'classes': [\n\
+{\n\
+'Person': {\n\
+'description': 'any person, living or dead',\n\
+'attributes': {\n\
+\n\
+}\n\
+}\n\
+}\n\
+]\n\
+}\n\
 document.getElementById('output').value=yaml.dump(schema)\
 ');                 
                   
