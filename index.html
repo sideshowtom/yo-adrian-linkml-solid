@@ -26,7 +26,7 @@ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
 await pyodide.loadPackagesFromImports('import yaml');
 //await pyodide.loadPackagesFromImports('import linkml_files');
 
-pyodide.runPythonAsync(`
+await pyodide.runPythonAsync(`
   import sys
   import micropip
   await micropip.install('linkml')
