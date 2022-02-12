@@ -24,8 +24,14 @@ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
 });
      
 await pyodide.loadPackagesFromImports('import yaml');
-await pyodide.loadPackagesFromImports('import linkml_files');
-     
+//await pyodide.loadPackagesFromImports('import linkml_files');
+
+pyodide.runPythonAsync(`
+  import micropip
+  await micropip.install('linkml')
+  import linkml
+`);
+
 output.value += "Ready!\n"; return pyodide;
 }
 let pyodideReadyPromise = main();
