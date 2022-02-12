@@ -28,13 +28,8 @@ await pyodide.loadPackagesFromImports('import yaml');
 
 //await pyodide.runPythonAsync(
 pyodide.runPythonAsync('
-  #import sys
   import micropip
   await micropip.install('linkml')
-  list=micropip.list()
-  #from js import document
-  #document.getElementById('output').value=list
-  #import linkml
 `);
 
 output.value += "Ready!\n"; return pyodide;
