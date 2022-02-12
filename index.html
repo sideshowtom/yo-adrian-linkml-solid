@@ -1,72 +1,27 @@
-<!DOCTYPE html>
-<html> <head>
-<script src="https://cdn.jsdelivr.net/pyodide/v0.19.0/full/pyodide.js"></script> </head>
-<body> <p>
-<h6>Rocky Solid Labs</h6>
-     The plan is to run LinkML utilities in Python and connect to a Solid pod with Javascript and solid-ui-components.
-</p>
-
-<button onclick="evaluatePython()">Run</button>
-<br />
-<br />
-<div>Output:</div>
-<textarea id="output" style="width: 100%;" rows="6" disabled></textarea>
-     
-<script>
-const output = document.getElementById("output");
-function addToOutput(s) {
-output.value += ">>> " + s + "\n";
-}
-output.value = "Initializing...\n"; // init Pyodide
-async function main() {
-let pyodide = await loadPyodide({
-indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
-});
-     
-await pyodide.loadPackagesFromImports('import yaml');
-//await pyodide.loadPackagesFromImports('import linkml_files');
-
-//await pyodide.runPythonAsync("\n\
-//pyodide.runPythonAsync("\n\
-//import micropip\n\
-//await micropip.install('linkml')\
-//");
-
-output.value += "Ready!\n"; return pyodide;
-}
-let pyodideReadyPromise = main();
-async function evaluatePython() {
-let pyodide = await pyodideReadyPromise; try {
-//pyodide.runPython("import sys\nfrom js import document\ndocument.getElementById('output').value='hi'");
-     
-pyodide.runPython("\n\
-import sys\n\
-from js import document\n\
-import micropip\n\
-document.getElementById('output').value='installing linkml...'\n\
-#await micropip.install('linkml')\
-import yaml\n\
-#from linkml.generators import *\n\
-schema = {\n\
-'id': 'http\:\/\/nuttin',\n\
-'classes': [\n\
-{\n\
-'Person': {\n\
-'description': 'any person, living or dead',\n\
-'attributes': {\n\
-\n\
-}\n\
-}\n\
-}\n\
-]\n\
-}\n\
-document.getElementById('output').value=yaml.dump(schema)\
-");                 
-                  
-                  
-} catch (err) {
-    addToOutput("oops: "+err);
-  }
-} 
-</script>
-</body> </html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/pyodide/v0.19.0/full/pyodide.js"
+    ></script>
+    <script type="text/javascript">
+      async function main() {
+        let pyodide = await loadPyodide({
+          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
+        });
+        await pyodide.loadPackage("micropip");
+        await pyodide.runPythonAsync(`
+        import micropip
+        await micropip.install('snowballstemmer')
+        import snowballstemmer
+        stemmer = snowballstemmer.stemmer('english')
+        print(stemmer.stemWords('go goes going gone'.split()))
+      `);
+      }
+      main();
+    </script>
+  </body>
+</html>
