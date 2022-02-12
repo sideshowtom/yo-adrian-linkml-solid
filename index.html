@@ -27,7 +27,7 @@ await pyodide.loadPackagesFromImports('import yaml');
 //await pyodide.loadPackagesFromImports('import linkml_files');
 
 //await pyodide.runPythonAsync(
-pyodide.runPythonAsync("\n\
+await pyodide.runPythonAsync("\n\
 import micropip\n\
 await micropip.install('linkml')\
 ");
