@@ -21,10 +21,8 @@
         import sys
         from js import document
         import micropip
-        await micropip.install('snowballstemmer')
-        import snowballstemmer
-        stemmer = snowballstemmer.stemmer('english')
-        document.getElementById('output').value=stemmer.stemWords('go goes going gone'.split())
+        await micropip.install("linkml")
+        document.getElementById('output').value="apparently installed linkml ok"
       `);
       }
       main();
