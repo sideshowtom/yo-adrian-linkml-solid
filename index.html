@@ -14,6 +14,7 @@
     <script type="text/javascript">
       async function main() {
         try {
+          document.getElementById('output').value='initializing...'
           let pyodide = await loadPyodide({
             indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
           });
