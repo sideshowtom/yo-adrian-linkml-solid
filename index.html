@@ -24,7 +24,8 @@
           from js import document
           import micropip
           document.getElementById('output').value='installing linkml...'
-          await micropip.install('https://files.pythonhosted.org/packages/12/b4/fe3de6633c6574576bab8873ccbfabfdb3aa99e8af76e5e399ebd9638aa7/linkml-1.1.18-py3-none-any.whl',keep_going=True)
+          #await micropip.install('https://files.pythonhosted.org/packages/12/b4/fe3de6633c6574576bab8873ccbfabfdb3aa99e8af76e5e399ebd9638aa7/linkml-1.1.18-py3-none-any.whl',keep_going=True)
+          await micropip.install('https://files.pythonhosted.org/packages/dd/e8/c6241bdfab61af611a6cffd8f7f2f4dde1f62766259b623509a5fad456aa/linkml_runtime-1.1.22-py3-none-any.whl, keep_going=True)
           document.getElementById('output').value='apparently installed linkml ok'
           `);
         } catch (err) {
