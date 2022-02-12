@@ -39,7 +39,7 @@ async function evaluatePython() {
 let pyodide = await pyodideReadyPromise; try {
 //pyodide.runPython("import sys\nfrom js import document\ndocument.getElementById('output').value='hi'");
      
-pyodide.runPython("\n\
+pyodide.runPythonAsync("\n\
 import sys\n\
 from js import document\n\
 import micropip\n\
