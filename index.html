@@ -43,6 +43,7 @@ pyodide.runPythonAsync("\n\
 import sys\n\
 from js import document\n\
 import micropip\n\
+document.getElementById('output').value='installing linkml...'\n\
 await micropip.install('linkml')\
 import yaml\n\
 #from linkml.generators import *\n\
