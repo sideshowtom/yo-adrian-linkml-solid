@@ -42,6 +42,8 @@ let pyodide = await pyodideReadyPromise; try {
 pyodide.runPython("\n\
 import sys\n\
 from js import document\n\
+import micropip\n\
+await micropip.install('linkml')\
 import yaml\n\
 #from linkml.generators import *\n\
 schema = {\n\
