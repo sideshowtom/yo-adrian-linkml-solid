@@ -31,9 +31,9 @@ await pyodide.runPythonAsync(`
   import micropip
   await micropip.install('linkml')
   list=micropip.list()
-  from js import document
-  document.getElementById('output').value=list
-  import linkml
+  #from js import document
+  #document.getElementById('output').value=list
+  #import linkml
 `);
 
 output.value += "Ready!\n"; return pyodide;
