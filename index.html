@@ -13,18 +13,22 @@
     ></script>
     <script type="text/javascript">
       async function main() {
-        let pyodide = await loadPyodide({
-          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
-        });
-        await pyodide.loadPackage("micropip");
-        await pyodide.runPythonAsync(`
-        import sys
-        from js import document
-        import micropip
-        document.getElementById('output').value='installing linkml...'
-        await micropip.install('https://files.pythonhosted.org/packages/12/b4/fe3de6633c6574576bab8873ccbfabfdb3aa99e8af76e5e399ebd9638aa7/linkml-1.1.18-py3-none-any.whl')
-        document.getElementById('output').value='apparently installed linkml ok'
-      `);
+        try {
+          let pyodide = await loadPyodide({
+            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
+          });
+          await pyodide.loadPackage("micropip");
+          await pyodide.runPythonAsync(`
+          import sys
+          from js import document
+          import micropip
+          document.getElementById('output').value='installing linkml...'
+          await micropip.install('https://files.pythonhosted.org/packages/12/b4/fe3de6633c6574576bab8873ccbfabfdb3aa99e8af76e5e399ebd9638aa7/linkml-1.1.18-py3-none-any.whl')
+          document.getElementById('output').value='apparently installed linkml ok'
+          `);
+        } catch (err) {
+          document.getElementById("output").value="oops: "+err
+        }
       }
       main();
     </script>
