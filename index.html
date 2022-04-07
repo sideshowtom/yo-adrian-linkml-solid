@@ -9,14 +9,14 @@
      
     <script
       type="text/javascript"
-      src="https://cdn.jsdelivr.net/pyodide/v0.19.0/full/pyodide.js"
+      src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"
     ></script>
     <script type="text/javascript">
       async function main() {
         try {
           document.getElementById('output').value='initializing...'
           let pyodide = await loadPyodide({
-            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
+            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.20.0/full/",
           });
           await pyodide.loadPackage("micropip");
           await pyodide.runPythonAsync(`
@@ -26,7 +26,8 @@
           document.getElementById('output').value='installing linkml-model...'
           #await micropip.install('https://files.pythonhosted.org/packages/12/b4/fe3de6633c6574576bab8873ccbfabfdb3aa99e8af76e5e399ebd9638aa7/linkml-1.1.18-py3-none-any.whl',keep_going=True)
           #await micropip.install('https://files.pythonhosted.org/packages/dd/e8/c6241bdfab61af611a6cffd8f7f2f4dde1f62766259b623509a5fad456aa/linkml_runtime-1.1.22-py3-none-any.whl', keep_going=True)
-          await micropip.install('https://files.pythonhosted.org/packages/f9/7c/5bd91c2c43cdda86c9ff5732fe82903e0ab4b1d5b7e493171ef50d4a04e1/linkml_model-1.0.7-py3-none-any.whl', keep_going=True)
+          #await micropip.install('https://files.pythonhosted.org/packages/f9/7c/5bd91c2c43cdda86c9ff5732fe82903e0ab4b1d5b7e493171ef50d4a04e1/linkml_model-1.0.7-py3-none-any.whl', keep_going=True)
+          await micropip.install('https://files.pythonhosted.org/packages/e3/9c/f91400a248b1df653960da46f1b47936b4b94180e4d62574903dbb29400d/linkml_runtime-1.2.5-py3-none-any.whl', keep_going=True)
           document.getElementById('output').value='apparently installed linkml-model ok'
           `);
         } catch (err) {
